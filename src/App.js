@@ -3,49 +3,43 @@ import ScrollMenu from 'react-horizontal-scrolling-menu';
 
 
 import chords from './chords'
+import ChordList from './chordsList'
 
 import './App.css';
 
 
 // list of items
 const list1 = [
+  { name: 'A♭' },
   { name: 'A' },
+  { name: 'B♭' },
   { name: 'B' },
   { name: 'C' },
+  { name: 'D♭' },
   { name: 'D' },
+  { name: 'E♭' },
   { name: 'E' },
   { name: 'F' },
+  { name: 'F♯' },
   { name: 'G' },
 ];
 
 const list2 = [
   { name: 'Major' },
   { name: 'minor' },
+  { name: '6' },
   { name: '7' },
+  { name: '9' },
+  { name: 'm6' },
   { name: 'm7' },
   { name: 'maj7' },
+  { name: 'dim'},
+  { name: '+'},
+  { name: 'sus'},
+
 ];
 
-const chordsList = {
-  A:{
-    Major:{
-      name:'A',
-      positions:'X02220',
-      fingers:'--123-'
-    },
-    minor:{
-      name:'Am',
-      positions:'X02210',
-      fingers:'--231-'
-    }
-  },
-  B:{
 
-  },
-  C:{
-
-  }
-}
 
 // One item component
 // selected prop will be passed
@@ -88,7 +82,7 @@ class App extends Component {
     this.menuItems1 = Menu(list1, selected1);
     this.menuItems2 = Menu(list2, selected2);
 
-    this.currentChord = chordsList.A.Major
+    this.currentChord = ChordList.A.Major
 
    
   }
@@ -96,29 +90,38 @@ class App extends Component {
   state = {
     selected1,
     selected2,
-    currentChord : chordsList.A.minor
+    currentChord : ChordList.A.minor
   };
 
   onSelect1 = key => {
     
     this.setState({ selected1: key });
     console.log(key + this.state.selected2)
-    this.currentChord = chordsList[key][this.state.selected2]
-    console.log(this.currentChord)
     
-    setTimeout(this.change, 1)
+    console.log(ChordList[key][this.state.selected2])
+    
+    if(ChordList[key][this.state.selected2] !== null){
+      this.currentChord = ChordList[key][this.state.selected2]
+      setTimeout(this.change, 1)
+    } else {
+      console.log('no such chord or not yet updated.')
+    }
   }
 
   onSelect2 = key => {
     
     this.setState({ selected2: key });
     console.log(this.state.selected1 + key)
-    this.currentChord = chordsList[this.state.selected1][key]
+    
     console.log(this.currentChord)
     
-    
-    
-    setTimeout(this.change, 1)
+    console.log()
+    if(ChordList[this.state.selected1][key] !== null){
+      this.currentChord = ChordList[this.state.selected1][key]
+      setTimeout(this.change, 1)
+    }else {
+      console.log('no such chord or not yet updated.')
+    }
   }
 
   resetCanvas = () => {
@@ -147,6 +150,10 @@ class App extends Component {
 
     return (
       <div className="App">
+
+        
+        
+        <chord name={this.currentChord.name} positions={this.currentChord.positions} fingers={this.currentChord.fingers} size="10" ></chord>
         <ScrollMenu
           data={menu1}
           arrowLeft={ArrowLeft}
@@ -161,10 +168,6 @@ class App extends Component {
           selected={selected2}
           onSelect={this.onSelect2}
         />
-
-        
-        
-        <chord name={this.currentChord.name} positions={this.currentChord.positions} fingers={this.currentChord.fingers} size="10" ></chord>
       </div>
     );
   }

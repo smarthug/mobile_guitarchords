@@ -1,0 +1,67 @@
+const chordsList = {
+    A:{
+      Major:{
+        name:'A',
+        positions:'X02220',
+        fingers:'--123-'
+      },
+      minor:{
+        name:'Am',
+        positions:'X02210',
+        fingers:'--231-'
+      },
+      6:{
+        name:'A6',
+        positions:'X02222',
+        fingers:'------'
+      },
+      7:{
+        name:'A7',
+        positions:'X02223',
+        fingers:'------'
+      },
+      9:{
+        name:'A9',
+        positions:'X02423',
+        fingers:'------'
+      },
+      m6:{
+        name:'Am6',
+        positions:'X02213',
+        fingers:'------'
+      },
+      m7:{
+        name:'Am7',
+        positions:'X02213',
+        fingers:'------'
+      },
+      maj7:{
+        name:'Amaj7',
+        positions:'X02120',
+        fingers:'------'
+      },
+      dim:{
+        name:'Adim',
+        positions:'XX1212',
+        fingers:'------'
+      },
+      "+":{
+        name:'A+',
+        positions:'X03221',
+        fingers:'------'
+      },
+      "sus":{
+        name:'Asus',
+        positions:'X02230',
+        fingers:'------'
+      },
+    },
+    B:{
+  
+    },
+    C:{
+  
+    }
+  }
+
+  export default chordsList

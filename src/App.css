@@ -17,3 +17,32 @@
   cursor: pointer;
 }
 
+.App {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  /* align-items: center; */
+  /* /* height: 100vh; */
+  
+}
+
+
+
+
+@media (width > 1024px) {
+  canvas {
+    width: 40%;
+    flex: 1 1 1;
+  }
+}
+
+@media (width <= 1024px) {
+  canvas {
+    width: 100%;
+  }
+}
+
+body{
+  
+}
